@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Us-Qz-4bh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cvt-tE-hZZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurants View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="8J1-GM-1yE">
+            <objects>
+                <navigationController id="cvt-tE-hZZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4PX-db-ifS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4Us-Qz-4bh" kind="relationship" relationship="rootViewController" id="5Yc-lt-X1u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DFL-Fq-Wbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-900" y="108"/>
+        </scene>
+        <!--Restaurants-->
         <scene sceneID="87s-Hz-8gA">
             <objects>
-                <tableViewController id="4Us-Qz-4bh" customClass="RestaurantsViewController" customModule="Takeaway" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="9HF-Re-WOJ">
+                <tableViewController title="Restaurants" id="4Us-Qz-4bh" customClass="RestaurantsViewController" customModule="Takeaway" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="9HF-Re-WOJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="71" id="vg8-Fx-18J">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="71"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" rowHeight="75" id="vg8-Fx-18J" customClass="RestaurantTableViewCell" customModule="Takeaway" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vg8-Fx-18J" id="NX0-S6-E2O">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLv-LY-YT3">
@@ -30,7 +46,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUU-9b-tcL">
-                                            <rect key="frame" x="20" y="39" width="374" height="23"/>
+                                            <rect key="frame" x="20" y="43" width="374" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -38,13 +54,17 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BUU-9b-tcL" firstAttribute="leading" secondItem="qLv-LY-YT3" secondAttribute="leading" id="6C0-15-Ebx"/>
-                                        <constraint firstItem="BUU-9b-tcL" firstAttribute="top" secondItem="qLv-LY-YT3" secondAttribute="bottom" constant="1" id="VRB-uh-Rg9"/>
+                                        <constraint firstItem="BUU-9b-tcL" firstAttribute="top" secondItem="qLv-LY-YT3" secondAttribute="bottom" constant="5" id="VRB-uh-Rg9"/>
                                         <constraint firstAttribute="trailing" secondItem="BUU-9b-tcL" secondAttribute="trailing" constant="20" id="a62-sp-qdb"/>
                                         <constraint firstAttribute="trailing" secondItem="qLv-LY-YT3" secondAttribute="trailing" constant="20" symbolic="YES" id="avr-PY-jz7"/>
                                         <constraint firstItem="qLv-LY-YT3" firstAttribute="leading" secondItem="NX0-S6-E2O" secondAttribute="leading" constant="20" symbolic="YES" id="nfq-hF-fYE"/>
                                         <constraint firstItem="qLv-LY-YT3" firstAttribute="top" secondItem="NX0-S6-E2O" secondAttribute="top" constant="11" id="yU4-jr-EdP"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="qLv-LY-YT3" id="RIS-MS-get"/>
+                                    <outlet property="statusLabel" destination="BUU-9b-tcL" id="NPX-Lf-cvm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -52,6 +72,7 @@
                             <outlet property="delegate" destination="4Us-Qz-4bh" id="lNp-Pd-dty"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Restaurants" id="Nyx-xx-3pT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVg-By-Kcd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
