@@ -18,6 +18,15 @@ class RestaurantsViewController: UITableViewController {
         dataSource.delegate = self
     }
     
+    @IBAction func selectedSortOption( _ segue: UIStoryboardSegue) {
+        if let controller = segue.source as? SortOptionsViewController {
+            let option = controller.selectedSortOption
+            dataSource.sortRestaurants(withOption: option)
+            tableView.reloadData()
+        }
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

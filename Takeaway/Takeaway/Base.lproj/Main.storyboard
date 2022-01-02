@@ -115,14 +115,98 @@
                             <outlet property="delegate" destination="4Us-Qz-4bh" id="lNp-Pd-dty"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Restaurants" id="Nyx-xx-3pT"/>
+                    <navigationItem key="navigationItem" title="Restaurants" id="Nyx-xx-3pT">
+                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" style="plain" id="c7D-gm-UQc">
+                            <connections>
+                                <segue destination="vO1-Eh-I18" kind="show" id="hbr-rr-vYZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVg-By-Kcd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-101" y="108"/>
         </scene>
+        <!--Sorting Options-->
+        <scene sceneID="q3e-MX-0NL">
+            <objects>
+                <tableViewController title="Sorting Options" id="gj1-QP-mqO" customClass="SortOptionsViewController" customModule="Takeaway" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZTX-Fe-5ds">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SortOptionCell" rowHeight="62" id="c0m-VL-Lq3" customClass="SortOptionTableViewCell" customModule="Takeaway" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="62"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c0m-VL-Lq3" id="Sgo-C6-aD0">
+                                    <rect key="frame" x="0.0" y="0.0" width="373.5" height="62"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwa-Xf-aP1">
+                                            <rect key="frame" x="20" y="19" width="333.5" height="24"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gwa-Xf-aP1" firstAttribute="centerY" secondItem="Sgo-C6-aD0" secondAttribute="centerY" id="BOp-2F-Vt9"/>
+                                        <constraint firstItem="gwa-Xf-aP1" firstAttribute="leading" secondItem="Sgo-C6-aD0" secondAttribute="leading" constant="20" symbolic="YES" id="NwI-b6-5cE"/>
+                                        <constraint firstAttribute="trailing" secondItem="gwa-Xf-aP1" secondAttribute="trailing" constant="20" id="asj-rq-Cqm"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="sortOptionLabel" destination="gwa-Xf-aP1" id="80J-nO-MXk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gj1-QP-mqO" id="HOR-bF-Hzk"/>
+                            <outlet property="delegate" destination="gj1-QP-mqO" id="wFq-Ch-pZK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sort" id="Wbg-FU-DWy">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="p5Q-CF-y2z">
+                            <connections>
+                                <action selector="reset" destination="gj1-QP-mqO" id="fU4-yV-CYZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Apply" id="091-5C-IYd">
+                            <connections>
+                                <action selector="apply" destination="gj1-QP-mqO" id="cLw-sz-Lbf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="aUr-Jr-xEf" kind="unwind" identifier="selectedSortOptionSegue" unwindAction="selectedSortOption:" id="KNS-fN-FRe"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAU-U3-knL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="aUr-Jr-xEf" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="108"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qvP-Ns-TQ6">
+            <objects>
+                <navigationController id="vO1-Eh-I18" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xJ9-vz-0wU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oFk-d1-XIT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gj1-QP-mqO" kind="relationship" relationship="rootViewController" id="ugB-cx-XBJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rm1-VH-Z9F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="678" y="108"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

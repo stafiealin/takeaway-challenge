@@ -5,7 +5,7 @@
 //  Created by Alin Stafie - Ghilase on 02.01.2022.
 //
 
-enum SortOption: String {
+enum SortOption: String, CaseIterable {
     case alphabetic = "Alphabetic"
     case bestMatch = "Best Match"
     case newest = "Newest"
