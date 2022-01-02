@@ -12,6 +12,7 @@ enum RestaurantStatus: String, Codable {
 }
 
 struct Restaurant: Decodable {
+    
     var name: String = ""
     var status: RestaurantStatus = .closed
     var bestMatch: Double = 0.0

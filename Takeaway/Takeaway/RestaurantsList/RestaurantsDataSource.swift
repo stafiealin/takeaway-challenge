@@ -13,6 +13,8 @@ protocol RestaurantsViewProtocol: AnyObject {
 class RestaurantsDataSource {
     
     private var restaurants: [Restaurant] = []
+    private var selectionSortOption: SortOption = .alphabetic
+    
     weak var delegate: RestaurantsViewProtocol?
     
     func getRestaurants() {
@@ -20,6 +22,7 @@ class RestaurantsDataSource {
             switch result {
             case .success(let restaurants):
                 self?.restaurants = restaurants
+                self?.sortRestaurants()
                 self?.delegate?.reloadData()
             case .failure(let error):
                 self?.delegate?.showError(message:error.localizedDescription)
@@ -34,8 +37,15 @@ class RestaurantsDataSource {
     func getViewModel(forIndex index: Int) -> RestaurantViewModel {
         
         let restaurant = restaurants[index]
-        let viewModel = RestaurantViewModel(with: restaurant)
+        let viewModel = RestaurantViewModel(with: restaurant, sortOption: selectionSortOption)
         
         return viewModel
+    }
+    
+    func sortRestaurants(withOption option: SortOption = .alphabetic) {
+        selectionSortOption = option
+        restaurants.sort { first, second in
+            return first.compare(with: second, option: option)
+        }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FA498BA2781E319003942DB /* Restaurant+Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498B92781E319003942DB /* Restaurant+Sorting.swift */; };
+		4FA498BC2781E343003942DB /* SortOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498BB2781E343003942DB /* SortOptions.swift */; };
 		4FA9FECA2777202F00FCA6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9FEC92777202F00FCA6F7 /* AppDelegate.swift */; };
 		4FA9FECC2777202F00FCA6F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9FECB2777202F00FCA6F7 /* SceneDelegate.swift */; };
 		4FA9FED12777202F00FCA6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FA9FECF2777202F00FCA6F7 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FA498B92781E319003942DB /* Restaurant+Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+Sorting.swift"; sourceTree = "<group>"; };
+		4FA498BB2781E343003942DB /* SortOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptions.swift; sourceTree = "<group>"; };
 		4FA9FEC62777202F00FCA6F7 /* Takeaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Takeaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA9FEC92777202F00FCA6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FA9FECB2777202F00FCA6F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				4FA9FEFA277C9EB400FCA6F7 /* Restaurant.swift */,
+				4FA498B92781E319003942DB /* Restaurant+Sorting.swift */,
+				4FA498BB2781E343003942DB /* SortOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,9 +353,11 @@
 				4FA9FEFB277C9EB400FCA6F7 /* Restaurant.swift in Sources */,
 				4FA9FF0C277CCE9500FCA6F7 /* RestaurantsViewController.swift in Sources */,
 				4FA9FECA2777202F00FCA6F7 /* AppDelegate.swift in Sources */,
+				4FA498BC2781E343003942DB /* SortOptions.swift in Sources */,
 				4FA9FF06277CA7B100FCA6F7 /* SessionManager.swift in Sources */,
 				4FBBFF2C277D128000086BA4 /* RestaurantsDataSource.swift in Sources */,
 				4FA9FF12277D0B4B00FCA6F7 /* RestaurantTableViewCell.swift in Sources */,
+				4FA498BA2781E319003942DB /* Restaurant+Sorting.swift in Sources */,
 				4FA9FECC2777202F00FCA6F7 /* SceneDelegate.swift in Sources */,
 				4FA9FF09277CC5BF00FCA6F7 /* RestaurantsResponse.swift in Sources */,
 				4FA9FF0F277D0A0F00FCA6F7 /* RestaurantViewModel.swift in Sources */,
