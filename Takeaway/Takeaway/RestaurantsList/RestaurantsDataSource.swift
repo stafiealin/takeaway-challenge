@@ -14,19 +14,30 @@ class RestaurantsDataSource {
     
     private var restaurants: [Restaurant] = []
     private var filteredRestaurants: [Restaurant] = []
-    private var selectionSortOption: SortOption = .alphabetic
+    private var selectedSortOption: SortOption {
+        didSet {
+            AppStorage.selectedSortOption = selectedSortOption
+        }
+    }
     
     weak var delegate: RestaurantsViewProtocol?
     
+    init() {
+        selectedSortOption = AppStorage.selectedSortOption
+    }
+    
     func getRestaurants() {
         SessionManager.shared.getRestaurants { [weak self] result in
+            guard let `self` = self else {
+                return
+            }
             switch result {
             case .success(let restaurants):
-                self?.restaurants = restaurants
-                self?.sortRestaurants()
-                self?.delegate?.reloadData()
+                self.restaurants = restaurants
+                self.sortRestaurants(withOption: self.selectedSortOption)
+                self.delegate?.reloadData()
             case .failure(let error):
-                self?.delegate?.showError(message:error.localizedDescription)
+                self.delegate?.showError(message:error.localizedDescription)
             }
         }
     }
@@ -42,13 +53,13 @@ class RestaurantsDataSource {
         
         let list = isFiltering ? filteredRestaurants : restaurants
         let restaurant = list[index]
-        let viewModel = RestaurantViewModel(with: restaurant, sortOption: selectionSortOption)
+        let viewModel = RestaurantViewModel(with: restaurant, sortOption: selectedSortOption)
         
         return viewModel
     }
     
     func sortRestaurants(withOption option: SortOption = .alphabetic) {
-        selectionSortOption = option
+        selectedSortOption = option
         restaurants.sort { first, second in
             return first.compare(with: second, option: option)
         }

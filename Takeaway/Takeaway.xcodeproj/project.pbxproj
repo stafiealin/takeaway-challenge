@@ -11,6 +11,7 @@
 		4FA498BC2781E343003942DB /* SortOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498BB2781E343003942DB /* SortOptions.swift */; };
 		4FA498BF2781F5F6003942DB /* SortOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498BE2781F5F6003942DB /* SortOptionsViewController.swift */; };
 		4FA498C22781F6F3003942DB /* SortOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498C12781F6F3003942DB /* SortOptionTableViewCell.swift */; };
+		4FA498C5278456C0003942DB /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA498C4278456C0003942DB /* AppStorage.swift */; };
 		4FA9FECA2777202F00FCA6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9FEC92777202F00FCA6F7 /* AppDelegate.swift */; };
 		4FA9FECC2777202F00FCA6F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9FECB2777202F00FCA6F7 /* SceneDelegate.swift */; };
 		4FA9FED12777202F00FCA6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FA9FECF2777202F00FCA6F7 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		4FA498BB2781E343003942DB /* SortOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptions.swift; sourceTree = "<group>"; };
 		4FA498BE2781F5F6003942DB /* SortOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionsViewController.swift; sourceTree = "<group>"; };
 		4FA498C12781F6F3003942DB /* SortOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOptionTableViewCell.swift; sourceTree = "<group>"; };
+		4FA498C4278456C0003942DB /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
 		4FA9FEC62777202F00FCA6F7 /* Takeaway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Takeaway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FA9FEC92777202F00FCA6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FA9FECB2777202F00FCA6F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4FA498C3278456AF003942DB /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4FA498C4278456C0003942DB /* AppStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		4FA9FEBD2777202E00FCA6F7 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		4FA9FEF9277C9B0400FCA6F7 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4FA498C3278456AF003942DB /* Storage */,
 				4FA9FF00277CA06900FCA6F7 /* Models */,
 			);
 			path = DataLayer;
@@ -375,6 +386,7 @@
 				4FA9FEFB277C9EB400FCA6F7 /* Restaurant.swift in Sources */,
 				4FA498BF2781F5F6003942DB /* SortOptionsViewController.swift in Sources */,
 				4FA9FF0C277CCE9500FCA6F7 /* RestaurantsViewController.swift in Sources */,
+				4FA498C5278456C0003942DB /* AppStorage.swift in Sources */,
 				4FA9FECA2777202F00FCA6F7 /* AppDelegate.swift in Sources */,
 				4FA498BC2781E343003942DB /* SortOptions.swift in Sources */,
 				4FA9FF06277CA7B100FCA6F7 /* SessionManager.swift in Sources */,
