@@ -16,16 +16,12 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var sortOptionStackView: UIStackView!
     
     func loadModel(_ viewModel: RestaurantViewModel) {
-        self.nameLabel.text = viewModel.name
-        self.statusLabel.text = viewModel.status
-        self.statusLabel.textColor = viewModel.statusColor
+        nameLabel.text = viewModel.name
+        statusLabel.text = viewModel.status
+        statusLabel.textColor = viewModel.statusColor
         
-        if let value = viewModel.sortValue {
-            sortValueLabel.text = value
-            sortOptionLabel.text = viewModel.sortOption
-            sortOptionStackView.isHidden = false
-        } else {
-            sortOptionStackView.isHidden = true
-        }
+        sortOptionStackView.isHidden = !viewModel.shouldShowSortValue
+        sortValueLabel.text = viewModel.sortValue
+        sortOptionLabel.text = viewModel.sortOption
     }
 }

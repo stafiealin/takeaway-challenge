@@ -13,6 +13,7 @@ protocol RestaurantsViewProtocol: AnyObject {
 class RestaurantsDataSource {
     
     private var restaurants: [Restaurant] = []
+    private var filteredRestaurants: [Restaurant] = []
     private var selectionSortOption: SortOption = .alphabetic
     
     weak var delegate: RestaurantsViewProtocol?
@@ -30,13 +31,17 @@ class RestaurantsDataSource {
         }
     }
     
-    var numberOfRestaurants: Int {
+    func numberOfRestaurants(isFiltering: Bool = false) -> Int {
+        if isFiltering {
+            return filteredRestaurants.count
+        }
         return restaurants.count
     }
-    
-    func getViewModel(forIndex index: Int) -> RestaurantViewModel {
         
-        let restaurant = restaurants[index]
+    func getRestaurantViewModel(forIndex index: Int, isFiltering: Bool = false) -> RestaurantViewModel {
+        
+        let list = isFiltering ? filteredRestaurants : restaurants
+        let restaurant = list[index]
         let viewModel = RestaurantViewModel(with: restaurant, sortOption: selectionSortOption)
         
         return viewModel
@@ -47,5 +52,14 @@ class RestaurantsDataSource {
         restaurants.sort { first, second in
             return first.compare(with: second, option: option)
         }
+        delegate?.reloadData()
+    }
+    
+    func filterRestaurants(byName searchString: String) {
+        filteredRestaurants = restaurants.filter({
+            $0.name.contains(searchString)
+        })
+        
+        delegate?.reloadData()
     }
 }

@@ -12,7 +12,8 @@ struct RestaurantViewModel {
     let status: String
     let statusColor: UIColor
     let sortOption: String
-    let sortValue: String?
+    let sortValue: String
+    let shouldShowSortValue: Bool
     
     init(with restaurant: Restaurant, sortOption: SortOption) {
         self.name = restaurant.name
@@ -30,10 +31,10 @@ struct RestaurantViewModel {
         
         self.sortOption = sortOption.rawValue
         
-        var sortValue: String?
+        var sortValue: String
         switch sortOption {
         case .alphabetic:
-            sortValue =  nil
+            sortValue = "\(restaurant.name)"
         case .bestMatch:
             sortValue = "\(restaurant.bestMatch)"
         case .newest:
@@ -52,5 +53,6 @@ struct RestaurantViewModel {
             sortValue = "\(restaurant.minCost)"
         }
         self.sortValue = sortValue
+        self.shouldShowSortValue = (sortOption != .alphabetic)
     }
 }
