@@ -113,7 +113,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Restaurants" id="Nyx-xx-3pT">
-                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" style="plain" id="c7D-gm-UQc">
+                        <barButtonItem key="rightBarButtonItem" image="slider.horizontal.3" catalog="system" id="c7D-gm-UQc">
                             <connections>
                                 <segue destination="vO1-Eh-I18" kind="show" id="hbr-rr-vYZ"/>
                             </connections>

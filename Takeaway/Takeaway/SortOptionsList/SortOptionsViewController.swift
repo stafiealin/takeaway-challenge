@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SortOptionsViewController: UITableViewController {
+final class SortOptionsViewController: UITableViewController {
     
     private let cellIdentifier = "SortOptionCell"
     private let selectedSortOptionSegue = "selectedSortOptionSegue"
@@ -15,11 +15,7 @@ class SortOptionsViewController: UITableViewController {
     private var selectedIndexPath: IndexPath!
     
     var selectedSortOption: SortOption = .alphabetic
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SortOption.allCases.count
     }

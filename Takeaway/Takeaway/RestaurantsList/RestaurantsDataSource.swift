@@ -10,8 +10,9 @@ protocol RestaurantsViewProtocol: AnyObject {
     func showError(message: String)
 }
 
-class RestaurantsDataSource {
+final class RestaurantsDataSource {
     
+    private let restaurantsProvider: RestaurantsProviderProtocol
     private var restaurants: [Restaurant] = []
     private var filteredRestaurants: [Restaurant] = []
     private var selectedSortOption: SortOption {
@@ -23,22 +24,23 @@ class RestaurantsDataSource {
     weak var delegate: RestaurantsViewProtocol?
     
     init() {
+        restaurantsProvider = DataProviderFactory.getRestaurantsProvider()
         selectedSortOption = AppStorage.selectedSortOption
     }
     
     func getRestaurants() {
-        SessionManager.shared.getRestaurants { [weak self] result in
-            guard let `self` = self else {
-                return
-            }
-            switch result {
-            case .success(let restaurants):
-                self.restaurants = restaurants
-                self.sortRestaurants(withOption: self.selectedSortOption)
-                self.delegate?.reloadData()
-            case .failure(let error):
-                self.delegate?.showError(message:error.localizedDescription)
-            }
+        restaurantsProvider.getRestaurants { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                switch result {
+                case .success(let restaurants):
+                    self.restaurants = restaurants
+                    self.sortRestaurants(withOption: self.selectedSortOption)
+                    self.delegate?.reloadData()
+                case .failure(let error):
+                    self.delegate?.showError(message:error.localizedDescription)
+                }
         }
     }
     

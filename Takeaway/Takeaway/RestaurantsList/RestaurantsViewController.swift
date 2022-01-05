@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RestaurantsViewController: UITableViewController {
+final class RestaurantsViewController: UITableViewController {
     
     private let cellIdentifier = "RestaurantCell"
     private let dataSource = RestaurantsDataSource()

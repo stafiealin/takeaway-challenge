@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SortOptionTableViewCell: UITableViewCell {
+final class SortOptionTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var sortOptionLabel: UILabel!
+    @IBOutlet private weak var sortOptionLabel: UILabel!
     
     func loadSortOption(_ option: SortOption) {
         self.sortOptionLabel.text = option.rawValue

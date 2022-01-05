@@ -7,13 +7,13 @@
 
 import UIKit
 
-class RestaurantTableViewCell: UITableViewCell {
+final class RestaurantTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var sortOptionLabel: UILabel!
-    @IBOutlet weak var sortValueLabel: UILabel!
-    @IBOutlet weak var sortOptionStackView: UIStackView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
+    @IBOutlet private weak var sortOptionLabel: UILabel!
+    @IBOutlet private weak var sortValueLabel: UILabel!
+    @IBOutlet private weak var sortOptionStackView: UIStackView!
     
     func loadModel(_ viewModel: RestaurantViewModel) {
         nameLabel.text = viewModel.name
