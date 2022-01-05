@@ -26,11 +26,7 @@ final class DataProvider: DataProviderProtocol {
             let response = try JSONDecoder().decode(DecodeType.self, from: data)
             completion(.success(response))
         } catch {
-            guard let error = error as? NetworkError else {
-                completion(.failure(.custom(message: error.localizedDescription)))
-                return
-            }
-            completion(.failure(error))
+            completion(.failure(.parsing))
         }
     }
 }

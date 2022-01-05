@@ -6,37 +6,59 @@
 //
 
 import XCTest
+import Takeaway
 
 class TakeawayUITests: XCTestCase {
-
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        try super.setUpWithError()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func resetSort() {
+        let editButton = app.navigationBars["Restaurants"].buttons["edit"]
+        editButton.tap()
+        app.navigationBars["Sort"].buttons["Reset"].tap()
+    }
+    
+    func applySortOption(_ option: SortOption) {
+        let optionString = option.rawValue
+        let editButton = app.navigationBars["Restaurants"].buttons["edit"]
+        editButton.tap()
+                
+        app.tables.cells.staticTexts["\(optionString)"].tap()
+        app.navigationBars["Sort"].buttons["Apply"].tap()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testFilterFunctionality() throws {
+        
+        let searchField = app.navigationBars["Restaurants"].searchFields["Search Restaurants"]
+        searchField.tap()
+        searchField.typeText("Ta")
+        
+        XCTAssertTrue(app.tables.cells/*@START_MENU_TOKEN@*/.staticTexts["Tanoshii Sushi"]/*[[".cells.staticTexts[\"Tanoshii Sushi\"]",".staticTexts[\"Tanoshii Sushi\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.exists)
+        XCTAssertTrue(app.tables.cells.staticTexts["Tandoori Express"].exists)
+    }
+    
+    func testSortSelectionUpdatesTableView() throws {
+        
+        applySortOption(.newest)
+        XCTAssertTrue(app.tables.cells.staticTexts["Indian Kitchen"].exists)
+        XCTAssertTrue(app.tables.cells.containing(.staticText, identifier:"272.0").staticTexts["Newest"].exists)
+
+        XCTAssertTrue(app.tables.cells.staticTexts["Lunchpakketdienst"].exists)
+        XCTAssertTrue(app.tables.cells.containing(.staticText, identifier:"259.0").staticTexts["Newest"].exists)
+        resetSort()
+    }
+    
+    func testResetSortHidesSortValuesInTableView() throws {
+        
+        applySortOption(.newest)
+        resetSort()
+
+        XCTAssertFalse(app.tables.cells.containing(.staticText, identifier:"259.0").staticTexts["Newest"].exists)
     }
 }

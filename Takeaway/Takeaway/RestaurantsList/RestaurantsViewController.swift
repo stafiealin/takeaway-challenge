@@ -10,7 +10,7 @@ import UIKit
 final class RestaurantsViewController: UITableViewController {
     
     private let cellIdentifier = "RestaurantCell"
-    private let dataSource = RestaurantsDataSource()
+    private let dataSource = RestaurantsDataSource(withProvider: DataProviderFactory.getRestaurantsProvider())
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {

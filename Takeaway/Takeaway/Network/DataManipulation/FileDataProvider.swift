@@ -1,5 +1,5 @@
 //
-//  JSONDataProvider.swift
+//  FileDataProvider.swift
 //  Takeaway
 //
 //  Created by Alin Stafie - Ghilase on 05.01.2022.
@@ -11,7 +11,7 @@ protocol RawDataProviderProtocol {
     func getData() throws -> Data
 }
 
-final class JSONDataProvider: RawDataProviderProtocol {
+final class FileDataProvider: RawDataProviderProtocol {
     private let filename: String
     
     init(withFilename name: String) {
@@ -21,13 +21,13 @@ final class JSONDataProvider: RawDataProviderProtocol {
     func getData() throws -> Data {
         do {
             if let bundlePath = Bundle.main.path(forResource: filename, ofType: "json"),
-                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                return jsonData
+                let fileData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+                return fileData
             }
         } catch {
-            throw NetworkError.parsing
+            throw NetworkError.badEncoding
         }
         
-        throw NetworkError.noData
+        throw NetworkError.fileNotFound
     }
 }

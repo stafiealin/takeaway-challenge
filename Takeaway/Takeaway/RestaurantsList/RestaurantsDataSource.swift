@@ -23,8 +23,8 @@ final class RestaurantsDataSource {
     
     weak var delegate: RestaurantsViewProtocol?
     
-    init() {
-        restaurantsProvider = DataProviderFactory.getRestaurantsProvider()
+    init(withProvider provider: RestaurantsProviderProtocol) {
+        restaurantsProvider = provider
         selectedSortOption = AppStorage.selectedSortOption
     }
     
@@ -50,11 +50,15 @@ final class RestaurantsDataSource {
         }
         return restaurants.count
     }
+    
+    func getRestaurant(forIndex index: Int, isFiltering: Bool = false) -> Restaurant {
+        let list = isFiltering ? filteredRestaurants : restaurants
+        return list[index]
+    }
         
     func getRestaurantViewModel(forIndex index: Int, isFiltering: Bool = false) -> RestaurantViewModel {
         
-        let list = isFiltering ? filteredRestaurants : restaurants
-        let restaurant = list[index]
+        let restaurant = getRestaurant(forIndex: index, isFiltering: isFiltering)
         let viewModel = RestaurantViewModel(with: restaurant, sortOption: selectedSortOption)
         
         return viewModel

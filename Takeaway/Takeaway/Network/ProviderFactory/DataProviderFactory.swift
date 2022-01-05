@@ -13,7 +13,7 @@ final class DataProviderFactory {
     private static let restaurantsJSONFilename = "Restaurants"
 
     static func getRestaurantsProvider() -> RestaurantsProviderProtocol {
-        let rawDataProvider = JSONDataProvider(withFilename: restaurantsJSONFilename)
+        let rawDataProvider = FileDataProvider(withFilename: restaurantsJSONFilename)
         let dataProvider = DataProvider(withRawDataProvider: rawDataProvider)
         let restaurantsProvider = RestaurantsProvider(withDataProvider: dataProvider)
         
